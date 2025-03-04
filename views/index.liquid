@@ -1,1 +1,39 @@
-Succes!
+{% render "partials/head.liquid" %}
+
+<h1>Oncollaboration</h1>
+
+<h2>Categories</h2>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.name }}</li>
+        {% endfor %}
+    </ul>
+
+<h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+
+<h2>Contourings</h2>
+    {% for contouring in contourings %}
+        <li>{{ contouring.image_scan }}</li>
+    {% endfor %}
+
+<h2>Speakers</h2>
+    {% for speaker in speakers %}
+        <li>{{ speaker.fullname }}</li>
+    {% endfor %}
+
+<h2>Users</h2>
+    {% for user in users %}
+        <li>{{ user.fullname }}</li>
+    {% endfor %}
+
+<h2>Webinars</h2>
+    {% for webinar in webinars %}
+        <li>{{ webinar.id }}</li>
+    {% endfor %}
+
+{% render "partials/foot.liquid" %}
