@@ -5,18 +5,30 @@ import express from 'express'
 // Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
 import { Liquid } from 'liquidjs';
 
+// Variabelen met api links
+const apiEndpoint = "https://fdnd-agency.directus.app/items/avl_"
+const apiCategories = "categories"
+const apiComments = "comments"
+const apiContourings = "contourings"
+const apiSpeakers = "speakers"
+const apiUsers = "users"
+const apiWebinars = "webinars"
 
-console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Doe een fetch naar de data die je nodig hebt
-// const apiResponse = await fetch('...')
+const categoriesResponse = await fetch(`${apiEndpoint}${apiCategories}`)
+const commentsResponse = await fetch(`${apiEndpoint}${apiComments}`)
+const contouringsResponse = await fetch(`${apiEndpoint}${apiContourings}`)
+const speakersResponse = await fetch(`${apiEndpoint}${apiSpeakers}`)
+const usersResponse = await fetch(`${apiEndpoint}${apiUsers}`)
+const webinarsResponse = await fetch(`${apiEndpoint}${apiWebinars}`)
 
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
-// const apiResponseJSON = await apiResponse.json()
-
-// Controleer eventueel de data in je console
-// (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
-// console.log(apiResponseJSON)
-
+const categoriesResponseJSON = await categoriesResponse.json()
+const commentsResponseJSON = await commentsResponse.json()
+const contouringsResponseJSON = await contouringsResponse.json()
+const speakersResponseJSON = await speakersResponse.json()
+const usersResponseJSON = await usersResponse.json()
+const webinarsResponseJSON = await webinarsResponse.json()
 
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
@@ -37,7 +49,13 @@ app.set('views', './views')
 app.get('/', async function (request, response) {
    // Render index.liquid uit de Views map
    // Geef hier eventueel data aan mee
-   response.render('index.liquid')
+   response.render('index.liquid', {
+    categories: categoriesResponseJSON.data, 
+    comments: commentsResponseJSON.data, 
+    contourings: contouringsResponseJSON.data, 
+    speakers: speakersResponseJSON.data, 
+    users: usersResponseJSON.data, 
+    webinars: webinarsResponseJSON.data})
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
