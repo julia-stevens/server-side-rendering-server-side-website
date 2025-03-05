@@ -1,0 +1,24 @@
+{% render "partials/head.liquid" %}
+
+    <ul>
+        {% for webinar in webinars %}
+            <li>{{ webinar.title }}</li>
+            <li><img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100"></li>
+
+            {% for speaker in webinar.speakers %}
+                <li>Speaker: {{ speaker.avl_speakers_id.fullname }}</li>
+            {% endfor %}
+    
+            {% for category in webinar.categories %}
+                <li>{{ category.avl_categories_id.name }}</li>
+            {% endfor %}
+
+            {% for resource in webinar.resources %}
+                <li>{{ resource.directus_files_id.filename_download }}</li>
+            {% endfor %}
+        {% endfor %}
+
+
+    </ul>    
+
+{% render "partials/foot.liquid" %}

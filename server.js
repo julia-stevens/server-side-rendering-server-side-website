@@ -45,6 +45,9 @@ app.engine('liquid', engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
+const apiResponse = "https://fdnd-agency.directus.app/items/avl_webinars"
+const fields = "?fields=*,speakers.*.*,resources.*.*,categories.*.*"
+
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
    // Render index.liquid uit de Views map
@@ -56,6 +59,14 @@ app.get('/', async function (request, response) {
     speakers: speakersResponseJSON.data, 
     users: usersResponseJSON.data, 
     webinars: webinarsResponseJSON.data})
+app.get("/webinar/:slug", async function (request, response) {
+  const slug = request.params.slug
+  const filter = `&filter={"slug":"${slug}"}`
+  
+  const webinarResponse = await fetch(`${apiResponse}${fields}${filter}`)
+  const webinarResponseJSON = await webinarResponse.json()
+
+  response.render("webinar.liquid", { webinars: webinarResponseJSON.data })
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
