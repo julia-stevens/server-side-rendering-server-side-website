@@ -1,20 +1,66 @@
 {% render "partials/head.liquid" %}
 
-<h1>Oncollaboration</h1>
+{% render "partials/header.liquid" %}
 
-<h2>Webinars</h2>
-    {% for webinar in webinars %}
-        <ul>
-            <li><a href="webinar/{{ webinar.slug }}">Title webinar: {{ webinar.title }}</a></li>
+    <main class="main-webinars">
+        <section class="introduction">
+            <h1>Webinars</h1>
+            <div class="search-bar search-bar-webinars">
+                <form>
+                    <label>Search<input type="search"></label>
+                    <button type="submit"><img src="/assets/search_icon.svg" alt="" width="10"></button>
+                </form>
+            </div>
+        </section>
 
-            {% for speaker in webinar.speakers %}
-                <li>Speaker: {{ speaker.avl_speakers_id.fullname }}</li>
-            {% endfor %}
+        <section class="webinars">
+            <h2 class="sr-only">Sort & filter webinars</h2>
+            <section class="filter-sort">
+                <h2>Sort & filter webinars</h2>
+                <div class="webinars-sort">
+                    <label>
+                        Sort by: 
+                        <select>
+                            <option value="newest">Newest</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="az">A-Z</option>
+                            <option value="views">Most viewed</option>
+                        </select>
+                    </label>
+                </div>
 
-            {% for category in webinar.categories %}
-                <li>{{ category.avl_categories_id.name }}</li>
-            {% endfor %}
-        </ul>
-    {% endfor %}
+                <form class="webinars-filter">
+                    {% for webinar in webinars %}
+                        {% for category in webinar.categories %}
+                            <button>{{ category.avl_categories_id.name }}</button>
+                        {% endfor %}
+                    {% endfor %}
+                </form>
+            </section>
+
+            <section class="webinars-highlight">
+                <h2 class="sr-only">Highlighted webinars</h2>
+                {% for webinar in webinars %}
+                    <article class="webinar-article-large">
+                        <a href="/webinar/:slug">
+                            <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
+                            <div class="webinar-thumbnail">
+                                <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">
+                                <p>{{ webinar.duration }}</p>
+                            </div>
+                            <div class="webinar-info">
+                                <h3>{{ webinar.title }}</h3>  
+                                {% for speaker in webinars.speakers %}
+                                    <p>{{ speaker.avl_speakers_id.fullname }}</p>
+                                {% endfor %}
+                            </div>
+                        </a>
+                    </article>
+                {% endfor %}
+            </section>
+        </section>
+    </main>
+
+{% render "partials/footer.liquid" %}
 
 {% render "partials/foot.liquid" %}
