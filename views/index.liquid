@@ -2,38 +2,19 @@
 
 <h1>Oncollaboration</h1>
 
-<h2>Categories</h2>
-    <ul>
-        {% for category in categories %}
-            <li>{{ category.name }}</li>
-        {% endfor %}
-    </ul>
-
-<h2>Comments</h2>
-    <ul>
-        {% for comment in comments %}
-            <li>{{ comment.content }}</li>
-        {% endfor %}
-    </ul>
-
-<h2>Contourings</h2>
-    {% for contouring in contourings %}
-        <li>{{ contouring.image_scan }}</li>
-    {% endfor %}
-
-<h2>Speakers</h2>
-    {% for speaker in speakers %}
-        <li>{{ speaker.fullname }}</li>
-    {% endfor %}
-
-<h2>Users</h2>
-    {% for user in users %}
-        <li>{{ user.fullname }}</li>
-    {% endfor %}
-
 <h2>Webinars</h2>
     {% for webinar in webinars %}
-        <li>{{ webinar.id }}</li>
+        <ul>
+            <li><a href="webinar/{{ webinar.slug }}">Title webinar: {{ webinar.title }}</a></li>
+
+            {% for speaker in webinar.speakers %}
+                <li>Speaker: {{ speaker.avl_speakers_id.fullname }}</li>
+            {% endfor %}
+
+            {% for category in webinar.categories %}
+                <li>{{ category.avl_categories_id.name }}</li>
+            {% endfor %}
+        </ul>
     {% endfor %}
 
 {% render "partials/foot.liquid" %}
