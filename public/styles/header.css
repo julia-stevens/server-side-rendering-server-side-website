@@ -1,0 +1,34 @@
+.header-nav {
+    background-color: var(--primary-color);
+    padding: var(--padding-sections);
+    border-radius: 0 0 var(--small-radius) var(--small-radius);
+
+    /* FLEX parent */
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+
+    .logos {
+        /* FLEX parent */
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+        gap: .5em;
+
+        @media (min-width: 290px) {
+            flex-direction: row;
+        }
+
+        img {
+            width: 20vw;
+            min-width: 5.8rem;
+            max-width: 7.8rem;
+        }
+    }
+
+    .search-bar-header {
+        label {
+            display: none; 
+        }
+    }
+}
