@@ -12,12 +12,14 @@ app.engine('liquid', engine.express())
 app.set('views', './views')
 
 // algemene API response links
-const apiEndpoint = "https://fdnd-agency.directus.app/items/avl_webinars"
-const fields = "?fields=*,speakers.*.*,resources.*.*,categories.*.*"
+const apiEndpoint = "https://fdnd-agency.directus.app/items"
+const apiWebinarEndpoint = "/avl_webinars"
+const apiContouringEndpoint = "/avl_contourings"
+const webinarFields = "?fields=*,speakers.*.*,resources.*.*,categories.*.*"
 
 app.get('/', async function (request, response) {
   // Webinar fetch link
-  const webinarResponse = await fetch(`${apiEndpoint}${fields}`)
+  const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}`)
   const webinarResponseJSON = await webinarResponse.json()
 
   response.render("index.liquid", { webinars: webinarResponseJSON.data })
@@ -28,10 +30,15 @@ app.get("/webinar/:slug", async function (request, response) {
   const slug = request.params.slug
   const filter = `&filter={"slug":"${slug}"}`
   
-  const webinarResponse = await fetch(`${apiEndpoint}${fields}${filter}`)
+  const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}${filter}`)
   const webinarResponseJSON = await webinarResponse.json()
 
-  response.render("webinar.liquid", { webinars: webinarResponseJSON.data })
+  const contouringResponse = await fetch(`${apiEndpoint}${apiContouringEndpoint}`)
+  const contouringResponseJSON = await contouringResponse.json()
+
+  console.log(contouringResponseJSON)
+
+  response.render("webinar.liquid", { webinars: webinarResponseJSON.data, contourings: contouringResponseJSON.data })
 })
 
 app.post('/', async function (request, response) {
