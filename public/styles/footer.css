@@ -3,6 +3,8 @@
     width: 100%; 
     padding: var(--padding-sections);
     overflow-x: auto; 
+    border-radius: var(--small-radius) var(--small-radius) 0 0;
+
 
     /* FLEX parent */
     display: flex; 
