@@ -41,21 +41,21 @@
             <section class="webinars-highlight">
                 <h2 class="sr-only">Highlighted webinars</h2>
                 {% for webinar in webinars %}
-                    <article class="webinar-article">
-                        <a href="/webinar/:slug">
-                            <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
-                            <div class="webinar-thumbnail">
-                                <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">
-                                <p>{{ webinar.duration }}</p>
-                            </div>
-                            <div class="webinar-info">
-                                <h3>{{ webinar.title }}</h3>  
-                                {% for speaker in webinars.speakers %}
-                                    <p>{{ speaker.avl_speakers_id.fullname }}</p>
-                                {% endfor %}
-                            </div>
-                        </a>
-                    </article>
+                    <a href="/webinar/{{ webinar.slug }}">
+                        <article class="webinar-article">
+                                <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
+                                <div class="webinar-thumbnail">
+                                    <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">
+                                    <p>{{ webinar.duration }}</p>
+                                </div>
+                                <div class="webinar-info">
+                                    <h3>{{ webinar.title }}</h3>  
+                                    {% for speaker in webinars.speakers %}
+                                        <p>{{ speaker.avl_speakers_id.fullname }}</p>
+                                    {% endfor %}
+                                </div>
+                        </article>
+                    </a>
                 {% endfor %}
             </section>
         </section>
