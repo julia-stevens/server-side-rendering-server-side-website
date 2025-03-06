@@ -25,6 +25,20 @@
                     </p>
                 </div>
             </section>
+
+            <section class="webinar-transcript">
+                <h3 class="sr-only">Read transcript</h3>
+                <button>Read transcript</button>
+                {% comment %} <p>{{ webinar.transcript }}</p> {% endcomment %}
+            </section>
+
+            <section class="webinar-description">
+                <h3>Description</h3>
+                <div class="description-container">
+                    <p>{{ webinar.description }}</p>
+                    <button>Read more</button>
+                </div>
+            </section>
         
             {% for speaker in webinar.speakers %}
             <section class="webinar-speaker">
@@ -41,12 +55,6 @@
                 </div>
             </section>
             {% endfor %}
-        
-            <section class="webinar-transcript">
-                <h3 class="sr-only">Read transcript</h3>
-                <button>Read transcript</button>
-                {% comment %} <p>{{ webinar.transcript }}</p> {% endcomment %}
-            </section>
         
             <section class="webinar-contourings">
                 <h3>Contourings</h3>
