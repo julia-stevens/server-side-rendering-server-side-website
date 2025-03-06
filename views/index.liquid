@@ -8,15 +8,15 @@
             <div class="search-bar search-bar-webinars">
                 <form>
                     <label>Search<input type="search"></label>
-                    <button type="submit"><img src="/assets/search_icon.svg" alt="" width="10"></button>
+                    <button type="submit" class="search-bar-btn search-btn-webinars"><img src="/assets/search_icon.svg" alt="" width="10"></button>
                 </form>
             </div>
         </section>
 
         <section class="webinars">
-            <h2 class="sr-only">Sort & filter webinars</h2>
+            <h2 class="sr-only">Sort & filter</h2>
             <section class="filter-sort">
-                <h2>Sort & filter webinars</h2>
+                <h2>Sort & filter</h2>
                 <div class="webinars-sort">
                     <label>
                         Sort by: 
@@ -30,32 +30,33 @@
                 </div>
 
                 <form class="webinars-filter">
+                    <button class="category-filter active">All</button>
                     {% for webinar in webinars %}
                         {% for category in webinar.categories %}
-                            <button>{{ category.avl_categories_id.name }}</button>
+                            <button class="category-filter">{{ category.avl_categories_id.name }}</button>
                         {% endfor %}
                     {% endfor %}
                 </form>
             </section>
 
-            <section class="webinars-highlight">
+            <section class="webinars-overview">
                 <h2 class="sr-only">Highlighted webinars</h2>
                 {% for webinar in webinars %}
-                    <a href="/webinar/{{ webinar.slug }}">
-                        <article class="webinar-article">
-                                <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
-                                <div class="webinar-thumbnail">
-                                    <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">
-                                    <p>{{ webinar.duration }}</p>
-                                </div>
-                                <div class="webinar-info">
-                                    <h3>{{ webinar.title }}</h3>  
-                                    {% for speaker in webinars.speakers %}
-                                        <p>{{ speaker.avl_speakers_id.fullname }}</p>
-                                    {% endfor %}
-                                </div>
-                        </article>
-                    </a>
+                    <article class="webinar-article">
+                        <a href="/webinar/{{ webinar.slug }}">
+                            <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
+                            <div class="webinar-thumbnail">
+                                <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">
+                                <p>{{ webinar.duration }}</p>
+                            </div>
+                            <div class="webinar-info">
+                                <h3>{{ webinar.title }}</h3>  
+                                {% for speaker in webinar.speakers %}
+                                    <p>{{ speaker.avl_speakers_id.fullname }}</p>
+                                {% endfor %}
+                            </div>
+                        </a>
+                    </article>
                 {% endfor %}
             </section>
         </section>
