@@ -16,8 +16,15 @@
 
         .webinar-stats {
             display: flex; 
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: start;
+            gap: .5em;
+
+            @media (min-width: 390px) {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
 
             .category {
                 text-transform: uppercase;
