@@ -1,0 +1,200 @@
+.main-webinar {
+    display: flex; 
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    padding: var(--padding-sections); 
+    
+    h3 {
+        margin-bottom: 1rem;
+    }
+
+    .webinar {
+        video {
+            width: 100%;
+        }
+
+        .webinar-stats {
+            display: flex; 
+            align-items: center;
+            justify-content: space-between;
+
+            .category {
+                text-transform: uppercase;
+                font-weight: var(--font-weight-bold);
+                border-radius: var(--small-radius);
+                padding: var(--padding-btns);
+                color: var(--tertiary-color);
+                background-color: var(--hightlight-primary-color);
+            }
+
+            .stat {
+                display: flex; 
+                align-items: center; 
+                gap: .5em;
+                color: var(--primary-color);
+
+                img {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+        }
+    }
+
+    .webinar-transcript {
+        width: 100%;
+    }
+
+    .webinar-speaker {
+        width: 100%;
+
+        .speaker-info {            
+            display: flex; 
+            flex-direction: column;
+            align-items: start;
+            gap: .5em;
+
+            @media (min-width: 360px) {
+                flex-direction: row; 
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            > img {
+                border-radius: 50%; 
+                width: 4rem;
+                height: 4rem;
+                object-fit: cover;
+            }
+
+            .speaker-name {
+                font-weight: var(--font-weight-bold);
+            }
+
+            a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 2rem;
+                height: 2rem; 
+                border-radius: 50%;
+                background-color: var(--primary-color); 
+                transition: var(--text-hover-transition);
+
+                img {
+                    width: .25em; 
+                    height: auto;
+                }
+
+                &:hover {
+                    background-color: var(--hightlight-primary-color);
+                }
+            }
+        }
+    }
+
+    .webinar-contourings {
+        width: 100%; 
+
+        article {
+            position: relative; 
+
+            h4 {
+                color: var(--light);
+                font-size: 1.5rem;
+                position: absolute; 
+                bottom: 5%; 
+                left: 50%; 
+                translate: -50% 0%; 
+            }
+
+            img {
+                width: 100%;
+                border-radius: var(--article-radius);
+            }
+        }
+    }
+
+    .webinar-articles {
+        width: 100%;
+
+        .webinar-resource {
+            display: flex; 
+            align-items: center;
+            justify-content: space-between;
+
+            .download {
+                display: flex; 
+                align-items: center;
+                gap: .5em;
+
+                .file-icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 3.5rem; 
+                    height: 2.5rem; 
+                    background-color: var(--primary-color);
+                    padding: .5em;
+                    border-radius: var(--small-radius);
+
+                    img {
+                        width: 1.5rem; 
+                        height: auto;
+                    }
+                }
+                
+
+            }
+            .resources-buttons {
+                display: flex; 
+                align-items: center;
+                gap: .5em;
+
+                a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 2rem;
+                    height: 2rem; 
+                    border-radius: 50%;
+                    background-color: var(--primary-color); 
+                    transition: var(--hightlight-primary-color);
+
+                    img {
+                        width: 1em; 
+                        height: auto;
+                    }
+
+                    &:hover {
+                        background-color: var(--hightlight-primary-color);
+                    }
+                }
+            }
+        }
+    }
+
+    .more-btn {
+        appearance: none;
+        border: none;
+        text-transform: uppercase;
+        font-weight: var(--font-weight-bold);
+        border-radius: var(--small-radius);
+        padding: var(--padding-btns);
+        color: var(--primary-color);
+        background-color: var(--secondary-color);
+        width: 100%;
+        transition: var(--text-hover-transition);
+    
+        &:hover {
+            background-color: var(--hightlight-primary-color);
+            color: var(--secondary-color);
+        }
+    
+        &:active {
+            color: var(--secondary-color);
+            background-color: var(--primary-color);
+        }   
+    }
+}

@@ -15,11 +15,12 @@
                     {% for category in webinar.categories %}
                         <p class="category">{{ category.avl_categories_id.name }}</p>
                     {% endfor %}
-                    <p class="stats-views">
+                    <p class="stat stats-views">
                         <img src="/assets/views_icon.svg" alt="">
-                        {{ webinar.views }} views
+                        {{ webinar.views }} 
+                        views
                     </p>
-                    <p class="stats-date">
+                    <p class="stat stats-date">
                         <img src="/assets/date_icon.svg" alt="">
                         {{ webinar.date | date: "%d-%m-%Y" }}
                     </p>
@@ -28,7 +29,7 @@
 
             <section class="webinar-transcript">
                 <h3 class="sr-only">Read transcript</h3>
-                <button>Read transcript</button>
+                <button class="more-btn">Read transcript</button>
                 {% comment %} <p>{{ webinar.transcript }}</p> {% endcomment %}
             </section>
 
@@ -36,7 +37,7 @@
                 <h3>Description</h3>
                 <div class="description-container">
                     <p>{{ webinar.description }}</p>
-                    <button>Read more</button>
+                    <button class="more-btn">Read more</button>
                 </div>
             </section>
         
@@ -46,8 +47,8 @@
                 <div class="speaker-info">
                     <img src="https://fdnd-agency.directus.app/assets/{{ speaker.avl_speakers_id.profile_picture }}" alt="" width="100">
                     <div class="speaker-titles">
-                        <p>{{ speaker.avl_speakers_id.fullname }}</p>
-                        <p>{{ speaker.avl_speakers_id.entitle }}</p>
+                        <p class="speaker-name">{{ speaker.avl_speakers_id.fullname }}</p>
+                        <p class="speaker-entitle">{{ speaker.avl_speakers_id.entitle }}</p>
                     </div>
                     <a href="/speaker/{{ speaker.avl_speakers_id.fullname }}">
                         <img src="/assets/info_icon.svg" alt="Learn more about {{ speaker.avl_speakers_id.fullname }}" width="5">
@@ -74,7 +75,9 @@
                     <article class="webinar-resource">
                         <h4 class="sr-only">{{ resource.directus_files_id.title }}</h4>
                         <div class="download">
-                            <img src="/assets/file_icon.svg" alt="" width="20">
+                            <div class="file-icon">
+                                <img src="/assets/file_icon.svg" alt="" width="20">
+                            </div>
                             <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}?download=1" download="{{ resource.directus_files_id.filename_download }}">
                                 {{ resource.directus_files_id.filename_download }}
                             </a>   
