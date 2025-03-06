@@ -30,5 +30,16 @@
         label {
             display: none; 
         }
+
+        .search-btn-header {
+            &:hover {
+                background-color: var(--tertiary-color);
+            }
+        
+            &:active {
+                background-color: var(--light);
+            }
+        }
+
     }
 }
