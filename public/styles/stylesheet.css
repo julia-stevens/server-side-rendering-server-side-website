@@ -14,3 +14,93 @@
     clip: rect(0, 0, 0, 0);
     overflow: hidden;
 }
+
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap');
+
+@font-face {
+    font-family: 'VAGRundschriftD';
+    font-style: normal;
+    font-weight: normal;
+    src: local('VAGRundschriftD'), url("/assets/font/VAGRundschriftD.woff") format('woff');
+}
+
+body {
+    /* Colors */
+    --primary-color: #6A0025; 
+    --secondary-color: #E1CCD3; 
+    --tertiary-color: #F0E5E9; 
+    --hightlight-primary-color: #1F000B; 
+    --highlight-secondary-color: #747474; 
+    --light: white; 
+    --dark: black; 
+    background-color: var(--secondary-color);
+    color: var(--dark);
+
+    /* Fonts */
+    --font-family-headings: "VAGRundschriftD";
+    --font-family-body: "Open Sans", sans-serif; 
+    --font-weight-light: 300;  
+    --font-weight-regular: 400;  
+    --font-weight-medium: 500;  
+    --font-weight-semibold: 600;  
+    --font-weight-bold: 700;  
+    --font-weight-extrabold: 800;  
+    font-family: var(--font-family-body);
+    font-weight: var(--font-weight-regular);
+    font-size: 16px;
+
+    /* Borders */
+    --large-radius: .625rem; 
+    --small-radius: .3125rem;
+    --article-radius: .5725rem;
+
+    /* Padding */
+    --padding-sections: .5rem 1rem; 
+
+    /* Transitions */
+    --text-hover-transition: .2s ease-in-out; 
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-family-headings);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.search-bar-btn {
+    appearance: none;
+    border: none;
+    background-color: var(--tertiary-color);
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--small-radius);
+    transition: var(--text-hover-transition);
+
+    /* GRID parent */
+    display: grid; 
+    place-items: center;
+
+    img {
+        width: 1rem;
+    }
+
+    &:hover {
+        background-color: var(--secondary-color);
+    }
+
+    &:active {
+        background-color: var(--light);
+    }
+}
