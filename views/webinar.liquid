@@ -41,21 +41,21 @@
                 </div>
             </section>
         
-            {% for speaker in webinar.speakers %}
             <section class="webinar-speaker">
                 <h3>Speaker</h3>
-                <div class="speaker-info">
-                    <img src="https://fdnd-agency.directus.app/assets/{{ speaker.avl_speakers_id.profile_picture }}" alt="" width="100">
-                    <div class="speaker-titles">
-                        <p class="speaker-name">{{ speaker.avl_speakers_id.fullname }}</p>
-                        <p class="speaker-entitle">{{ speaker.avl_speakers_id.entitle }}</p>
+                {% for speaker in webinar.speakers %}
+                    <div class="speaker-info">
+                        <img src="https://fdnd-agency.directus.app/assets/{{ speaker.avl_speakers_id.profile_picture }}" alt="" width="100">
+                        <div class="speaker-titles">
+                            <p class="speaker-name">{{ speaker.avl_speakers_id.fullname }}</p>
+                            <p class="speaker-entitle">{{ speaker.avl_speakers_id.entitle }}</p>
+                        </div>
+                        <a href="/speaker/{{ speaker.avl_speakers_id.fullname }}">
+                            <img src="/assets/info_icon.svg" alt="Learn more about {{ speaker.avl_speakers_id.fullname }}" width="5">
+                        </a>
                     </div>
-                    <a href="/speaker/{{ speaker.avl_speakers_id.fullname }}">
-                        <img src="/assets/info_icon.svg" alt="Learn more about {{ speaker.avl_speakers_id.fullname }}" width="5">
-                    </a>
-                </div>
+                {% endfor %}
             </section>
-            {% endfor %}
         
             <section class="webinar-contourings">
                 <h3>Contourings</h3>
