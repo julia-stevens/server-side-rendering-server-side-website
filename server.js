@@ -6,7 +6,7 @@ const app = express()
 
 app.use(express.static('public'))
 
-const engine = new Liquid();
+const engine = new Liquid()
 app.engine('liquid', engine.express())
 
 app.set('views', './views')
