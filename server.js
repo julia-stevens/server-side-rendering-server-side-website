@@ -28,7 +28,7 @@ app.get('/', async function (request, response) {
 app.get("/webinar/:slug", async function (request, response) {
   // Variabelen fetch link individuele webinar pagina
   const slug = request.params.slug
-  const filter = `&filter={"slug":"${slug}"}`
+  const filter = `&filter={"slug":"${slug}"}` 
   
   const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}${filter}`)
   const webinarResponseJSON = await webinarResponse.json()
@@ -36,7 +36,6 @@ app.get("/webinar/:slug", async function (request, response) {
   const contouringResponse = await fetch(`${apiEndpoint}${apiContouringEndpoint}`)
   const contouringResponseJSON = await contouringResponse.json()
 
-  console.log(contouringResponseJSON)
 
   response.render("webinar.liquid", { webinars: webinarResponseJSON.data, contourings: contouringResponseJSON.data })
 })

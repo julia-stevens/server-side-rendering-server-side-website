@@ -8,16 +8,16 @@
             <div class="search-bar search-bar-webinars">
                 <form>
                     <label>Search<input type="search"></label>
-                    <button type="submit" class="search-bar-btn search-btn-webinars"><img src="/assets/search_icon.svg" alt="" width="10"></button>
+                    <button type="submit" class="search-bar-btn search-btn-webinars"><img src="/assets/search_icon.svg" alt="Search" width="10"></button>
                 </form>
             </div>
         </section>
 
-        <section class="webinars">
-            <h2 class="sr-only">Sort & filter</h2>
+        <div class="webinars">
+            {% comment %} <h2 class="sr-only">Sort & filter</h2> {% endcomment %}
             <section class="filter-sort">
                 <h2>Sort & filter</h2>
-                <div class="webinars-sort">
+                <form class="webinars-sort">
                     <label>
                         Sort by: 
                         <select>
@@ -27,7 +27,7 @@
                             <option value="views">Most viewed</option>
                         </select>
                     </label>
-                </div>
+                </form>
 
                 <form class="webinars-filter">
                     <button class="category-filter active">All</button>
@@ -59,7 +59,7 @@
                     </article>
                 {% endfor %}
             </section>
-        </section>
+        </div>
     </main>
 
 {% render "partials/footer.liquid" %}

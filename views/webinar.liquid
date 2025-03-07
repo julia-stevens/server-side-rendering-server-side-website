@@ -3,28 +3,31 @@
 {% render "partials/header.liquid" %}
 
     <main class="main-webinar">
-        {% for webinar in webinars %}
-            <h1>Webinar</h1>
-            
+        {% for webinar in webinars %}            
             <section class="webinar">
+                <h1>Webinar</h1>
                 <h2>{{ webinar.title }}</h2>
                 <video controls width="250">
                     <source src="https://fdnd-agency.directus.app/assets/{{ webinar.video }}" />
                 </video>
-                <div class="webinar-stats">
+                <dl class="webinar-stats">
                     {% for category in webinar.categories %}
-                        <p class="category">{{ category.avl_categories_id.name }}</p>
+                        <dt class="category">{{ category.avl_categories_id.name }}</dt>
                     {% endfor %}
-                    <p class="stat stats-views">
-                        <img src="/assets/views_icon.svg" alt="">
+                    <dt class="stat stats-views">
+                        <img src="/assets/views_icon.svg" alt=""> Views
+                    </dt>
+                    <dd>
                         {{ webinar.views }} 
-                        views
-                    </p>
-                    <p class="stat stats-date">
-                        <img src="/assets/date_icon.svg" alt="">
+                    </dd>
+                    <dt class="stat stats-date">
+                        <img src="/assets/date_icon.svg" alt=""> Date
+                    </dt>
+                    <dd>
                         {{ webinar.date | date: "%d-%m-%Y" }}
-                    </p>
-                </div>
+                    </dd>
+                </dl>
+                
             </section>
 
             <section class="webinar-transcript">
