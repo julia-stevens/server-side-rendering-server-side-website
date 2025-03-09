@@ -151,3 +151,13 @@ select {
     border-radius: var(--small-radius);
     height: 2rem;
 }
+
+/* input[type="radio"] {
+    appearance: none;
+} */
+
+input[type="radio"]:checked {
+    color: var(--secondary-color);
+    background-color: var(--primary-color);   
+}
+

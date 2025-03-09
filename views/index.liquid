@@ -43,12 +43,17 @@
                 </form>
 
                 <form class="webinars-filter">
-                    <button class="category-filter active">All</button>
-                    {% for webinar in webinars %}
-                        {% for category in webinar.categories %}
-                            <button class="category-filter">{{ category.avl_categories_id.name }}</button>
+                    <label>
+                        <input type="radio" name="category" value="" {% if currentCategory == "" %} checked {% endif %}>
+                        All
+                    </label>
+                        {% for category in categories %}
+                            <label>
+                                <input type="radio" name="category" value="{{ category.name }}" {% if currentCategory == category.name %} checked {% endif %}>
+                                {{ category.name }}
                         {% endfor %}
-                    {% endfor %}
+                    </label>
+                    <button type="submit">Submit</button>
                 </form>
             </section>
 

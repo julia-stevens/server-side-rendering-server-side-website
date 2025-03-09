@@ -15,36 +15,51 @@ app.set('views', './views')
 const apiEndpoint = "https://fdnd-agency.directus.app/items"
 const apiWebinarEndpoint = "/avl_webinars"
 const apiContouringEndpoint = "/avl_contourings"
+const apiCategoriesEndpoint = "/avl_categories"
 const webinarFields = "?fields=*,speakers.*.*,resources.*.*,categories.*.*"
 
 app.get('/', async function (request, response) {
   
-  let sortWebinars = ""
+  let sortWebinars = "";
+  const filterCategory = "&filter[categories][avl_categories_id][name][_eq]=";
+  let filteredCategory = "";
 
+  // Sorting logic
   switch (request.query.sort) {
     case "newest":
-      sortWebinars = "&sort=-date"
-      break
+      sortWebinars = "&sort=-date";
+      break;
     case "oldest":
-      sortWebinars = "&sort=date"
-      break
+      sortWebinars = "&sort=date";
+      break;
     case "az":
-      sortWebinars = "&sort=title"
-      break
+      sortWebinars = "&sort=title";
+      break;
     case "views":
-      sortWebinars = "&sort=views"
-      break
+      sortWebinars = "&sort=views";
+      break;
     default: 
-      sortWebinars = ""
-
+      sortWebinars = "";
   }  
-  
-  // Webinar fetch link
-  const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}${sortWebinars}`)
-  const webinarResponseJSON = await webinarResponse.json()
 
-  response.render("index.liquid", { webinars: webinarResponseJSON.data, currentSort: request.query.sort || "newest" })
-})
+  if (request.query.category) {
+    filteredCategory = `${filterCategory}${encodeURIComponent(request.query.category)}`;
+  }
+  
+  const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}${sortWebinars}${filteredCategory}`);
+  const webinarResponseJSON = await webinarResponse.json();
+
+  const categoriesResponse = await fetch(`${apiEndpoint}${apiCategoriesEndpoint}`)
+  const categoriesResponseJSON = await categoriesResponse.json()
+
+
+  response.render("index.liquid", { 
+    webinars: webinarResponseJSON.data,
+    categories: categoriesResponseJSON.data, 
+    currentSort: request.query.sort || "newest",
+    currentCategory: request.query.category || "" 
+  });
+});
 
 app.get("/webinar/:slug", async function (request, response) {
   // Variabelen fetch link individuele webinar pagina
