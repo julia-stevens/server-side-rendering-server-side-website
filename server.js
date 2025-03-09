@@ -18,8 +18,29 @@ const apiContouringEndpoint = "/avl_contourings"
 const webinarFields = "?fields=*,speakers.*.*,resources.*.*,categories.*.*"
 
 app.get('/', async function (request, response) {
+  
+  let sortWebinars = ""
+
+  switch (request.query.sort) {
+    case "newest":
+      sortWebinars = "&sort=-date"
+      break
+    case "oldest":
+      sortWebinars = "&sort=date"
+      break
+    case "az":
+      sortWebinars = "&sort=title"
+      break
+    case "views":
+      sortWebinars = "&sort=views"
+      break
+    default: 
+      sortWebinars = ""
+
+  }  
+  
   // Webinar fetch link
-  const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}`)
+  const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}${sortWebinars}`)
   const webinarResponseJSON = await webinarResponse.json()
 
   response.render("index.liquid", { webinars: webinarResponseJSON.data })
