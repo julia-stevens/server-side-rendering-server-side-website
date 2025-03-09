@@ -43,7 +43,7 @@ app.get('/', async function (request, response) {
   const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}${sortWebinars}`)
   const webinarResponseJSON = await webinarResponse.json()
 
-  response.render("index.liquid", { webinars: webinarResponseJSON.data })
+  response.render("index.liquid", { webinars: webinarResponseJSON.data, currentSort: request.query.sort || "newest" })
 })
 
 app.get("/webinar/:slug", async function (request, response) {

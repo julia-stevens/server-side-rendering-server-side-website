@@ -20,12 +20,23 @@
                 <form class="webinars-sort">
                     <label>
                         Sort by: 
-                        <select>
-                            <option value="newest">Newest</option>
-                            <option value="oldest">Oldest</option>
-                            <option value="az">A-Z</option>
-                            <option value="views">Most viewed</option>
                         <select name="sort">
+                            <option value="newest" 
+                                {% if currentSort == "newest" %} selected {% endif %}>
+                                Newest
+                            </option>
+                            <option value="oldest"
+                                {% if currentSort == "oldest" %} selected {% endif %}>
+                                Oldest
+                            </option>
+                            <option value="az"
+                                {% if currentSort == "az" %} selected {% endif %}>
+                                A-Z
+                            </option>
+                            <option value="views"
+                                {% if currentSort == "views" %} selected {% endif %}>
+                                Most viewed
+                            </option>
                         </select>
                     </label>
                     <button type="submit" class="category-filter active">Submit</button>
