@@ -29,8 +29,8 @@
                                 {% if currentSort == "oldest" %} selected {% endif %}>
                                 Oldest
                             </option>
-                            <option value="az"
-                                {% if currentSort == "az" %} selected {% endif %}>
+                            <option value="alphabetical"
+                                {% if currentSort == "alphabetical" %} selected {% endif %}>
                                 A-Z
                             </option>
                             <option value="views"
@@ -61,7 +61,7 @@
                 <h2 class="sr-only">Highlighted webinars</h2>
                 {% for webinar in webinars %}
                     <article class="webinar-article">
-                        <a href="/webinar/{{ webinar.slug }}">
+                        <a href="/webinars/{{ webinar.slug }}">
                             <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
                             <div class="webinar-thumbnail">
                                 <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">

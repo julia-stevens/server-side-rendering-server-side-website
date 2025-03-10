@@ -18,7 +18,7 @@ const apiContouringEndpoint = "/avl_contourings"
 const apiCategoriesEndpoint = "/avl_categories"
 const webinarFields = "?fields=*,speakers.*.*,resources.*.*,categories.*.*"
 
-app.get('/', async function (request, response) {
+app.get('/webinars/', async function (request, response) {
   
   let sortWebinars = "";
   const filterCategory = "&filter[categories][avl_categories_id][name][_eq]=";
@@ -32,7 +32,7 @@ app.get('/', async function (request, response) {
     case "oldest":
       sortWebinars = "&sort=date";
       break;
-    case "az":
+    case "alphabetical":
       sortWebinars = "&sort=title";
       break;
     case "views":
@@ -61,7 +61,7 @@ app.get('/', async function (request, response) {
   });
 });
 
-app.get("/webinar/:slug", async function (request, response) {
+app.get("/webinars/:slug", async function (request, response) {
   // Variabelen fetch link individuele webinar pagina
   const slug = request.params.slug
   const filter = `&filter={"slug":"${slug}"}` 
