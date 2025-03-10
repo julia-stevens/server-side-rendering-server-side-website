@@ -10,8 +10,13 @@
     }
 
     .webinar {
+        display: flex; 
+        flex-direction: column;
+        gap: 1rem;
+
         video {
             width: 100%;
+            /* max-width: 800px; */
         }
 
         .webinar-stats {
@@ -19,11 +24,13 @@
             flex-direction: column;
             align-items: start;
             gap: .5em;
+            max-width: max-content;
 
-            @media (min-width: 390px) {
+            @media (min-width: 500px) {
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
+                gap: 2em;
             }
 
             .category {
@@ -35,11 +42,22 @@
                 background-color: var(--hightlight-primary-color);
             }
 
+            .stats {
+                display: flex; 
+                flex-direction: row;
+                align-items: center;
+                gap: .5em;
+            }
+
             .stat {
                 display: flex; 
                 align-items: center; 
                 gap: .5em;
                 color: var(--primary-color);
+
+                dd {
+                    font-weight: var(--font-weight-bold);
+                }
 
                 img {
                     width: 1rem;
@@ -53,6 +71,10 @@
         width: 100%;
     }
 
+    .webinar-description {
+        width: 100%; 
+    }
+
     .webinar-speaker {
         width: 100%;
 
@@ -60,7 +82,9 @@
             display: flex; 
             flex-direction: column;
             align-items: start;
-            gap: .5em;
+            gap: 1em;
+
+            max-width: max-content;
 
             @media (min-width: 360px) {
                 flex-direction: row; 
@@ -104,8 +128,22 @@
     .webinar-contourings {
         width: 100%; 
 
+        .contourings {
+            display: flex; 
+            flex-direction: column;
+            align-items: start;
+            gap: .5rem;
+
+            @media (min-width: 500px) {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
         article {
             position: relative; 
+            width: 100%;
+            max-width: 450px;
 
             h4 {
                 color: var(--light);
@@ -125,11 +163,24 @@
 
     .webinar-articles {
         width: 100%;
+        max-width: fit-content;
+
+        display: flex; 
+        flex-direction: column; 
+        align-items: start; 
 
         .webinar-resource {
             display: flex; 
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: start;
+            gap: .5em;
+
+            .article-card {
+                display: flex; 
+                flex-direction: row; 
+                align-items: start; 
+                gap: 1rem;
+            }
 
             .download {
                 display: flex; 
@@ -151,9 +202,16 @@
                         height: auto;
                     }
                 }
-                
 
+                a {
+                    display: none; 
+
+                    @media (min-width: 400px) {
+                        display: inline-block;
+                    }
+                }
             }
+            
             .resources-buttons {
                 display: flex; 
                 align-items: center;

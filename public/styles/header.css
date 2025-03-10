@@ -26,6 +26,28 @@
         }
     }
 
+    .header-links {
+        display: none;
+
+        @media (min-width: 1000px) {
+            display: flex; 
+            flex-grow: 1;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+
+            a {
+                color: var(--light);
+                transition: var(--text-hover-transition);
+                font-weight: var(--font-weight-regular);
+
+                &:hover {
+                    color: var(--secondary-color);
+                }
+            }
+        }
+    }
+
     .search-bar-header {
         label {
             display: none; 

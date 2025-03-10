@@ -5,12 +5,15 @@
     overflow-x: auto; 
     border-radius: var(--small-radius) var(--small-radius) 0 0;
 
-
     /* FLEX parent */
     display: flex; 
     align-items: center;
     justify-content: space-between;
     gap: .5em;
+
+    @media (min-width: 1000px) {
+        display: none;
+    }
 
     a {
         figure {

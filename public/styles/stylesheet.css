@@ -12,7 +12,7 @@
     box-sizing: border-box;
     padding: 0; 
     margin: 0; 
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .sr-only {
@@ -63,6 +63,9 @@ body {
 
     /* Transitions */
     --text-hover-transition: .2s ease-in-out; 
+
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 h1, h2, h3, h4 {
@@ -99,3 +102,52 @@ button {
         width: 1rem;
     }
 }
+
+.webinars-btns {
+    appearance: none;
+    border: none;
+    text-transform: uppercase;
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--small-radius);
+    padding: var(--padding-btns);
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    transition: var(--text-hover-transition);
+
+    &:hover {
+        background-color: var(--hightlight-primary-color);
+        color: var(--secondary-color);
+    }
+
+    &.submit-button {
+        color: var(--secondary-color);
+        background-color: var(--primary-color);
+
+        &:hover {
+            background-color: var(--hightlight-primary-color);
+            color: var(--secondary-color);
+        }
+    }
+}
+
+.breadcrumbs {
+    display: flex; 
+    flex-direction: row;
+    gap: .2rem;
+    align-items: start;
+    flex-wrap: wrap;
+
+    a {
+        color: var(--primary-color);
+        transition: var(--text-hover-transition);
+
+        &:hover {
+            color: var(--hightlight-primary-color);
+        }
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+

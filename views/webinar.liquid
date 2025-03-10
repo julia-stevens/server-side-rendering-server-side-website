@@ -14,18 +14,24 @@
                     {% for category in webinar.categories %}
                         <dt class="category">{{ category.avl_categories_id.name }}</dt>
                     {% endfor %}
-                    <dt class="stat stats-views">
-                        <img src="/assets/views_icon.svg" alt=""> Views
-                    </dt>
-                    <dd>
-                        {{ webinar.views }} 
-                    </dd>
-                    <dt class="stat stats-date">
-                        <img src="/assets/date_icon.svg" alt=""> Date
-                    </dt>
-                    <dd>
-                        {{ webinar.date | date: "%d-%m-%Y" }}
-                    </dd>
+                    <div class="stats">
+                        <dt class="stat stats-views">
+                            <img src="/assets/views_icon.svg" alt=""> 
+                            <strong>Views</strong>
+                        </dt>
+                        <dd>
+                            <strong>{{ webinar.views }}</strong> 
+                        </dd>
+                    </div>
+                    <div class="stats">
+                        <dt class="stat stats-date">
+                            <img src="/assets/date_icon.svg" alt=""> 
+                            <strong>Date</strong>
+                        </dt>
+                        <dd>
+                            <strong>{{ webinar.date | date: "%d-%m-%Y" }}</strong>
+                        </dd>
+                    </div>
                 </dl>
                 
             </section>
@@ -62,6 +68,7 @@
         
             <section class="webinar-contourings">
                 <h3>Contourings</h3>
+                <div class="contourings">
                 {% for contouring in contourings %}
                     <a href="/contouring/{{ contouring.title }}">
                         <article>
@@ -70,29 +77,32 @@
                         </article>
                     </a>
                 {% endfor %}
+                </div>
             </section>
         
             <section class="webinar-articles">
                 <h3>Articles</h3>
                 {% for resource in webinar.resources %}
                     <article class="webinar-resource">
-                        <h4 class="sr-only">{{ resource.directus_files_id.title }}</h4>
-                        <div class="download">
-                            <div class="file-icon">
-                                <img src="/assets/file_icon.svg" alt="" width="20">
-                            </div>
-                            <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}?download=1" download="{{ resource.directus_files_id.filename_download }}">
-                                {{ resource.directus_files_id.filename_download }}
-                            </a>   
-                        </div> 
-                        <div class="resources-buttons">
-                            <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}" class="resources-button" target="_blank">
-                                <img src="/assets/view_icon.svg" alt="View file" width="20">
-                            </a>
-                            <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}?download=1" download="{{ resource.directus_files_id.filename_download }}" class="resources-button">
-                                <img src="/assets/download_icon.svg" alt="Download file" width="20">
-                            </a>
-                        </div>                     
+                        <h4>{{ resource.directus_files_id.title }}</h4>
+                        <div class="article-card">
+                            <div class="download">
+                                <div class="file-icon">
+                                    <img src="/assets/file_icon.svg" alt="" width="20">
+                                </div>
+                                <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}?download=1" download="{{ resource.directus_files_id.filename_download }}">
+                                    {{ resource.directus_files_id.filename_download }}
+                                </a>   
+                            </div> 
+                            <div class="resources-buttons">
+                                <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}" class="resources-button" target="_blank">
+                                    <img src="/assets/view_icon.svg" alt="View file" width="20">
+                                </a>
+                                <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}?download=1" download="{{ resource.directus_files_id.filename_download }}" class="resources-button">
+                                    <img src="/assets/download_icon.svg" alt="Download file" width="20">
+                                </a>
+                            </div>    
+                        </div>                 
                     </article>
                 {% endfor %}
             </section>
