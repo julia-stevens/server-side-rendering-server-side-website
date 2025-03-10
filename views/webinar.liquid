@@ -3,7 +3,12 @@
 {% render "partials/header.liquid" %}
 
     <main class="main-webinar">
-        {% for webinar in webinars %}            
+        {% for webinar in webinars %}  
+            <div class="breadcrumbs">
+                <a href="/">Home</a>
+                <a href="/webinars">/ Webinars</a>
+                <a href="/webinars/{{ webinar.slug }}">/ {{ webinar.title }}</a>
+            </div>          
             <section class="webinar">
                 <h1>Webinar</h1>
                 <h2>{{ webinar.title }}</h2>
