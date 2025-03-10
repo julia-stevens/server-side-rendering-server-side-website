@@ -19,7 +19,6 @@ const apiCategoriesEndpoint = "/avl_categories"
 const webinarFields = "?fields=*,speakers.*.*,resources.*.*,categories.*.*"
 
 app.get('/webinars/', async function (request, response) {
-  
   let sortWebinars = "";
   const filterCategory = "&filter[categories][avl_categories_id][name][_eq]=";
   let filteredCategory = "";
@@ -52,14 +51,13 @@ app.get('/webinars/', async function (request, response) {
   const categoriesResponse = await fetch(`${apiEndpoint}${apiCategoriesEndpoint}`)
   const categoriesResponseJSON = await categoriesResponse.json()
 
-
   response.render("index.liquid", { 
     webinars: webinarResponseJSON.data,
     categories: categoriesResponseJSON.data, 
     currentSort: request.query.sort || "newest",
-    currentCategory: request.query.category || "" 
-  });
-});
+    currentCategory: request.query.category || ""
+  })
+})
 
 app.get("/webinars/:slug", async function (request, response) {
   // Variabelen fetch link individuele webinar pagina
@@ -73,7 +71,10 @@ app.get("/webinars/:slug", async function (request, response) {
   const contouringResponseJSON = await contouringResponse.json()
 
 
-  response.render("webinar.liquid", { webinars: webinarResponseJSON.data, contourings: contouringResponseJSON.data })
+  response.render("webinar.liquid", { 
+    webinars: webinarResponseJSON.data, 
+    contourings: contouringResponseJSON.data,
+  })
 })
 
 app.post('/', async function (request, response) {
@@ -86,6 +87,7 @@ app.listen(app.get('port'), function () {
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 
+// 404 pagina
 app.use((request, response, next) => {
   response.status(404).render("error.liquid")
 })
