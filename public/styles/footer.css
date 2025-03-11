@@ -1,3 +1,8 @@
+footer {
+    position: sticky; 
+    bottom: 0; 
+}
+
 .footer-nav {
     background-color: var(--light);
     width: 100%; 
