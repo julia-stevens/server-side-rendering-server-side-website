@@ -151,3 +151,28 @@ h1 {
     font-size: 2.5rem;
 }
 
+.error {
+    display: flex; 
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+
+    ul {
+        display: flex; 
+        flex-direction: column;
+        align-items: start;
+        gap: 1rem; 
+
+        li {
+
+            a {
+                transition: var(--text-hover-transition);
+                font-weight: var(--font-weight-bold);
+
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+}
