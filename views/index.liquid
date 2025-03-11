@@ -1,94 +1,77 @@
 {% render "partials/head.liquid" %}
-
 {% render "partials/header.liquid" %}
 
-    <main class="main-webinars">
-        <div class="breadcrumbs">
-            <a href="/">Home</a>
-            <a href="/webinars">/ Webinars</a>
-        </div>
-        <section class="introduction">
-            <h1>Webinars</h1>
-            <div class="search-bar search-bar-webinars">
-                <form>
-                    <label>Search<input type="search"></label>
-                    <button type="submit" class="search-bar-btn search-btn-webinars"><img src="/assets/search_icon.svg" alt="Search" width="10"></button>
-                </form>
+    <main class="index-main">
+        <section class="home-introduction">
+            <h1>Welcome to <em>Oncollaboration</em></h1>
+            <p>On Oncollaboration, you can watch webinars on radiotherapy, access automatic transcripts, and explore related articles. You can also participate in the interactive Q&A section to ask questions, share insights, and engage in discussions with colleagues. The platform is designed to support knowledge exchange and collaboration in the field of radiotherapy.</p>
+            <a href="">Check out our webinars below</a>
+        </section>
+
+        <section class="home-webinars">
+            <h2>Webinars</h2>
+            <div class="overview-webinars-home">
+                {% for webinar in webinars %}
+                    <article class="webinar-article">
+                        <a href="/webinars/{{ webinar.slug }}">
+                            <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
+                            <div class="webinar-thumbnail">
+                                <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">
+                                <p>{{ webinar.duration }}</p>
+                            </div>
+                            <div class="webinar-info">
+                                <h3>{{ webinar.title }}</h3>  
+                                {% for speaker in webinar.speakers %}
+                                    <p>{{ speaker.avl_speakers_id.fullname }}</p>
+                                {% endfor %}
+                            </div>
+                        </a>
+                    </article>
+                {% endfor %}
             </div>
         </section>
 
-        <div class="webinars">
-            {% comment %} <h2 class="sr-only">Sort & filter</h2> {% endcomment %}
-            <section class="filter-sort">
-                <h2>Sort & filter</h2>
-                <form class="webinars-sort">
-                    <label>
-                        Sort by: 
-                        <select name="sort">
-                            <option value="newest" 
-                                {% if currentSort == "newest" %} selected {% endif %}>
-                                Newest
-                            </option>
-                            <option value="oldest"
-                                {% if currentSort == "oldest" %} selected {% endif %}>
-                                Oldest
-                            </option>
-                            <option value="alphabetical"
-                                {% if currentSort == "alphabetical" %} selected {% endif %}>
-                                A-Z
-                            </option>
-                            <option value="views"
-                                {% if currentSort == "views" %} selected {% endif %}>
-                                Most viewed
-                            </option>
-                        </select>
-                    </label>
-                    <button type="submit" class="webinars-btns submit-button">Sort webinars</button>
-                </form>
+        <section class="home-contourings">
+            <h2>Contourings</h2>
+            <div class="contourings">
+            {% for contouring in contourings %}
+                <a href="/contouring/{{ contouring.title }}">
+                    <article>
+                        <h4>{{ contouring.title }}</h4>
+                        <img src="https://fdnd-agency.directus.app/assets/{{ contouring.image_scan }}" alt="CT-scan {{ contouring.title }}" width="100">
+                    </article>
+                </a>
+            {% endfor %}
+            </div>
+        </section>
 
-                <form class="webinars-filter">
-                    <div class="filters">
-                    <label>
-                        <input type="radio" name="category" value="" {% if currentCategory == "" %} checked {% endif %}>
-                        <span>All</span>
-                    </label>
-
-                    {% for category in categories %}
-                        <label>
-                            <input type="radio" name="category" value="{{ category.name }}" {% if currentCategory == category.name %} checked {% endif %}>
-                            <span>{{ category.name }}</span>
-                        </label>
-                    {% endfor %}
-                    </div>
-                    <button type="submit" class="webinars-btns submit-button">Filter webinars</button>
-                </form>
-            </section>
-
-            <section class="all-webinars">
-                <h2>Overview webinars</h2>
-                    <div class="webinars-overview">
-                        {% for webinar in webinars %}
-                            <article class="webinar-article">
-                                <a href="/webinars/{{ webinar.slug }}">
-                                    <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
-                                    <div class="webinar-thumbnail">
-                                        <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">
-                                        <p>{{ webinar.duration }}</p>
-                                    </div>
-                                    <div class="webinar-info">
-                                        <h3>{{ webinar.title }}</h3>  
-                                        {% for speaker in webinar.speakers %}
-                                            <p>{{ speaker.avl_speakers_id.fullname }}</p>
-                                        {% endfor %}
-                                    </div>
-                                </a>
-                            </article>
-                        {% endfor %}
-                    </div>
-            </section>
-        </div>
+        <section class="home-articles">
+            <h3>Articles</h3>
+            {% for resource in resources %}
+                <article class="webinar-resource">
+                    <h4>{{ resource.directus_files_id.title }}</h4>
+                    <div class="article-card">
+                        <div class="download">
+                            <div class="file-icon">
+                                <img src="/assets/file_icon.svg" alt="" width="20">
+                            </div>
+                            <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}?download=1" download="{{ resource.directus_files_id.filename_download }}">
+                                {{ resource.directus_files_id.filename_download }}
+                            </a>   
+                        </div> 
+                        <div class="resources-buttons">
+                            <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}" class="resources-button" target="_blank">
+                                <img src="/assets/view_icon.svg" alt="View file" width="20">
+                            </a>
+                            <a href="https://fdnd-agency.directus.app/assets/{{ resource.directus_files_id.filename_disk }}?download=1" download="{{ resource.directus_files_id.filename_download }}" class="resources-button">
+                                <img src="/assets/download_icon.svg" alt="Download file" width="20">
+                            </a>
+                        </div>    
+                    </div>                 
+                </article>
+            {% endfor %}
+        </section>     
     </main>
 
 {% render "partials/footer.liquid" %}
-
 {% render "partials/foot.liquid" %}

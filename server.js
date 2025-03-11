@@ -11,14 +11,37 @@ app.engine('liquid', engine.express())
 
 app.set('views', './views')
 
-// algemene API response links
+// API response links
 const apiEndpoint = "https://fdnd-agency.directus.app/items"
 const apiWebinarEndpoint = "/avl_webinars"
 const apiContouringEndpoint = "/avl_contourings"
 const apiCategoriesEndpoint = "/avl_categories"
 const webinarFields = "?fields=*,speakers.*.*,resources.*.*,categories.*.*"
 
-app.get('/webinars/', async function (request, response) {
+app.get("/", async function (request, response) {
+  const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}`);
+  const webinarResponseJSON = await webinarResponse.json();
+
+  const contouringResponse = await fetch(`${apiEndpoint}${apiContouringEndpoint}`)
+  const contouringResponseJSON = await contouringResponse.json()
+
+  // van ChatGPT om alle resources op te halen 
+  let allResources = []
+  webinarResponseJSON.data.forEach((webinar) => {
+    if (webinar.resources && Array.isArray(webinar.resources)) {
+      allResources = allResources.concat(webinar.resources)
+    }
+  })
+  // einde ChatGPT code
+
+  response.render("index.liquid", {
+    webinars: webinarResponseJSON.data,
+    contourings: contouringResponseJSON.data,
+    resources: allResources 
+  })
+})
+
+app.get("/webinars/", async function (request, response) {
   let sortWebinars = "";
   const filterCategory = "&filter[categories][avl_categories_id][name][_eq]=";
   let filteredCategory = "";
@@ -51,7 +74,7 @@ app.get('/webinars/', async function (request, response) {
   const categoriesResponse = await fetch(`${apiEndpoint}${apiCategoriesEndpoint}`)
   const categoriesResponseJSON = await categoriesResponse.json()
 
-  response.render("index.liquid", { 
+  response.render("webinars.liquid", { 
     webinars: webinarResponseJSON.data,
     categories: categoriesResponseJSON.data, 
     currentSort: request.query.sort || "newest",
@@ -69,7 +92,6 @@ app.get("/webinars/:slug", async function (request, response) {
 
   const contouringResponse = await fetch(`${apiEndpoint}${apiContouringEndpoint}`)
   const contouringResponseJSON = await contouringResponse.json()
-
 
   response.render("webinar.liquid", { 
     webinars: webinarResponseJSON.data, 

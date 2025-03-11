@@ -1,0 +1,94 @@
+{% render "partials/head.liquid" %}
+
+{% render "partials/header.liquid" %}
+
+    <main class="main-webinars">
+        <div class="breadcrumbs">
+            <a href="/">Home</a>
+            <a href="/webinars">/ Webinars</a>
+        </div>
+        <section class="introduction">
+            <h1>Webinars</h1>
+            <div class="search-bar search-bar-webinars">
+                <form>
+                    <label>Search<input type="search"></label>
+                    <button type="submit" class="search-bar-btn search-btn-webinars"><img src="/assets/search_icon.svg" alt="Search" width="10"></button>
+                </form>
+            </div>
+        </section>
+
+        <div class="webinars">
+            {% comment %} <h2 class="sr-only">Sort & filter</h2> {% endcomment %}
+            <section class="filter-sort">
+                <h2>Sort & filter</h2>
+                <form class="webinars-sort">
+                    <label>
+                        Sort by: 
+                        <select name="sort">
+                            <option value="newest" 
+                                {% if currentSort == "newest" %} selected {% endif %}>
+                                Newest
+                            </option>
+                            <option value="oldest"
+                                {% if currentSort == "oldest" %} selected {% endif %}>
+                                Oldest
+                            </option>
+                            <option value="alphabetical"
+                                {% if currentSort == "alphabetical" %} selected {% endif %}>
+                                A-Z
+                            </option>
+                            <option value="views"
+                                {% if currentSort == "views" %} selected {% endif %}>
+                                Most viewed
+                            </option>
+                        </select>
+                    </label>
+                    <button type="submit" class="webinars-btns submit-button">Sort webinars</button>
+                </form>
+
+                <form class="webinars-filter">
+                    <div class="filters">
+                    <label>
+                        <input type="radio" name="category" value="" {% if currentCategory == "" %} checked {% endif %}>
+                        <span>All</span>
+                    </label>
+
+                    {% for category in categories %}
+                        <label>
+                            <input type="radio" name="category" value="{{ category.name }}" {% if currentCategory == category.name %} checked {% endif %}>
+                            <span>{{ category.name }}</span>
+                        </label>
+                    {% endfor %}
+                    </div>
+                    <button type="submit" class="webinars-btns submit-button">Filter webinars</button>
+                </form>
+            </section>
+
+            <section class="all-webinars">
+                <h2>Overview webinars</h2>
+                    <div class="webinars-overview">
+                        {% for webinar in webinars %}
+                            <article class="webinar-article">
+                                <a href="/webinars/{{ webinar.slug }}">
+                                    <h3 class="sr-only">Webinar details of {{ webinar.title }}</h3>
+                                    <div class="webinar-thumbnail">
+                                        <img src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}" alt="" width="100">
+                                        <p>{{ webinar.duration }}</p>
+                                    </div>
+                                    <div class="webinar-info">
+                                        <h3>{{ webinar.title }}</h3>  
+                                        {% for speaker in webinar.speakers %}
+                                            <p>{{ speaker.avl_speakers_id.fullname }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </a>
+                            </article>
+                        {% endfor %}
+                    </div>
+            </section>
+        </div>
+    </main>
+
+{% render "partials/footer.liquid" %}
+
+{% render "partials/foot.liquid" %}
