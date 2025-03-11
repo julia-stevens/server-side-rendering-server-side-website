@@ -5,11 +5,10 @@
         <section class="home-introduction">
             <h1>Welcome to <em>Oncollaboration</em></h1>
             <p>On Oncollaboration, you can watch webinars on radiotherapy, access automatic transcripts, and explore related articles. You can also participate in the interactive Q&A section to ask questions, share insights, and engage in discussions with colleagues. The platform is designed to support knowledge exchange and collaboration in the field of radiotherapy.</p>
-            <a href="">Check out our webinars below</a>
         </section>
 
         <section class="home-webinars">
-            <h2>Webinars</h2>
+            <h2><a href="/webinars">Webinars</a></h2>
             <div class="overview-webinars-home">
                 {% for webinar in webinars %}
                     <article class="webinar-article">
@@ -32,7 +31,7 @@
         </section>
 
         <section class="home-contourings">
-            <h2>Contourings</h2>
+            <h2><a href="/contourings">Contourings</a></h2>
             <div class="contourings">
             {% for contouring in contourings %}
                 <a href="/contouring/{{ contouring.title }}">
@@ -46,10 +45,10 @@
         </section>
 
         <section class="home-articles">
-            <h3>Articles</h3>
+            <h2><a href="/articles">Articles</a></h2>
             {% for resource in resources %}
                 <article class="webinar-resource">
-                    <h4>{{ resource.directus_files_id.title }}</h4>
+                    <h3>{{ resource.directus_files_id.title }}</h3>
                     <div class="article-card">
                         <div class="download">
                             <div class="file-icon">
