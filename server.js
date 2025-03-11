@@ -37,7 +37,7 @@ app.get("/", async function (request, response) {
   response.render("index.liquid", {
     webinars: webinarResponseJSON.data,
     contourings: contouringResponseJSON.data,
-    resources: allResources 
+    resources: allResources
   })
 })
 
@@ -95,7 +95,7 @@ app.get("/webinars/:slug", async function (request, response) {
 
   response.render("webinar.liquid", { 
     webinars: webinarResponseJSON.data, 
-    contourings: contouringResponseJSON.data,
+    contourings: contouringResponseJSON.data
   })
 })
 
