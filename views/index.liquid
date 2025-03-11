@@ -8,7 +8,10 @@
         </section>
 
         <section class="home-webinars">
-            <h2><a href="/webinars">Webinars</a></h2>
+            <div class="heading-home-section">
+                <h2><a href="/webinars">Webinars</a></h2>
+                <a href="/webinars" class="webinars-btns submit-button">See all webinars</a>
+            </div>
             <div class="overview-webinars-home">
                 {% for webinar in webinars %}
                     <article class="webinar-article">
@@ -31,7 +34,10 @@
         </section>
 
         <section class="home-contourings">
-            <h2><a href="/contourings">Contourings</a></h2>
+            <div class="heading-home-section">
+                <h2><a href="/contourings">Contourings</a></h2>
+                <a href="/contourings" class="webinars-btns submit-button">See all contourings</a>
+            </div>
             <div class="contourings">
             {% for contouring in contourings %}
                 <a href="/contouring/{{ contouring.title }}">
@@ -45,7 +51,10 @@
         </section>
 
         <section class="home-articles">
-            <h2><a href="/articles">Articles</a></h2>
+            <div class="heading-home-section">
+                <h2><a href="/articles">Articles</a></h2>
+                <a href="/articles" class="webinars-btns submit-button">See all articles</a>
+            </div>
             {% for resource in resources %}
                 <article class="webinar-resource">
                     <h3>{{ resource.directus_files_id.title }}</h3>
