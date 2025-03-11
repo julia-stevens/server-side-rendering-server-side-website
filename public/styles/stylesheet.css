@@ -63,9 +63,6 @@ body {
 
     /* Transitions */
     --text-hover-transition: .2s ease-in-out; 
-
-    max-width: 1300px;
-    margin: 0 auto;
 }
 
 h1, h2, h3, h4 {
@@ -175,4 +172,9 @@ h1 {
             }
         }
     }
+}
+
+main {
+    max-width: 1300px;
+    margin: 0 auto;
 }
