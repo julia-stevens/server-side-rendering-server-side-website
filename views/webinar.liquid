@@ -1,8 +1,11 @@
 {% assign pageTitle = "Webinar | Oncollaboration" %}
 {% include "partials/head.liquid" %}
+
+<a href="#main" class="more-btn skip-link">Skip to main content</a>
+
 {% render "partials/header.liquid" %}
 
-    <main class="main-webinar">
+    <main class="main-webinar" id="main">
         {% for webinar in webinars %}  
             <div class="breadcrumbs">
                 <a href="/">Home</a>
@@ -44,7 +47,7 @@
             <section class="webinar-transcript">
                 <h3 class="sr-only">Read transcript</h3>
                 <button class="more-btn">Read transcript</button>
-                {% comment %} <p>{{ webinar.transcript }}</p> {% endcomment %}
+                {% comment %} <p>{{ webinar.transcript | strip_html }}</p> {% endcomment %}
             </section>
 
             <section class="webinar-description">
