@@ -16,7 +16,7 @@
 
         video {
             width: 100%;
-            /* max-width: 800px; */
+            max-width: 900px;
         }
 
         .webinar-stats {
@@ -238,28 +238,5 @@
                 }
             }
         }
-    }
-
-    .more-btn {
-        appearance: none;
-        border: none;
-        text-transform: uppercase;
-        font-weight: var(--font-weight-bold);
-        border-radius: var(--small-radius);
-        padding: var(--padding-btns);
-        color: var(--primary-color);
-        background-color: var(--secondary-color);
-        width: 100%;
-        transition: var(--text-hover-transition);
-    
-        &:hover {
-            background-color: var(--hightlight-primary-color);
-            color: var(--secondary-color);
-        }
-    
-        &:active {
-            color: var(--secondary-color);
-            background-color: var(--primary-color);
-        }   
     }
 }
