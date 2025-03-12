@@ -92,8 +92,11 @@ Liquid is een template-engine waarmee je dynamische HTML-pagina's kunt genereren
 
 ## Installatie
 Zoals beschreven bij Kenmerken is bij dit project gebruik gemaakt van NodeJS. Om aan dit project te werken moet NodeJS geïnstalleerd zijn. Eenmal geïnstalleerd kan het project geopend worden in de code editor.
-Voer in de terminal npm install uit om alle afhankelijkheden te installeren.
-Voer vervolgens npm start uit om de server te starten.
+
+Voer in de terminal `npm install` uit om alle afhankelijkheden te installeren.
+
+Voer vervolgens `npm start` uit om de server te starten.
+
 Ga in je browser naar http://localhost:8000 om het project te bekijken.
 
 ## Bronnen
