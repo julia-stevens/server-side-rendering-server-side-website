@@ -97,6 +97,7 @@ Voer vervolgens npm start uit om de server te starten.
 Ga in je browser naar http://localhost:8000 om het project te bekijken.
 
 ## Bronnen
+* [FDND Agency](https://github.com/fdnd-agency/oncollaboration/wiki/Design-Challenge)
 
 ## Licentie
 This project is licensed under the terms of the [MIT license](./LICENSE).
