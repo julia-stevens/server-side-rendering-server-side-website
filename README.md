@@ -26,6 +26,8 @@ Ontwerp en ontwikkel het online platform Oncollaboration om kennisoverdracht en 
 ### Oplossing
 Mijn oplossing voor de uitdaging omvat de uitwerking van 3 soorten pagina's van _Oncollaboration_, namelijk: home pagina, webinars overzicht en de detail pagina's van de webinars. Ook kan er gefilterd en gesorteerd worden om de juiste webinars makkelijker te zoeken. 
 
+[Bekijk hier de live site](https://server-side-rendering-server-side-w6g6.onrender.com)
+
 ## Beschrijving
 De Home-pagina begint met een korte introductie over het platform _Oncollaboration_ en vertelt de gebruiker wat er zoal te vinden is op de website. Ook staat hier een overzicht van de webinars, contourings en articles. De gebruiker kan vanuit deze pagina door naar de overzichtspagina van één van de genoemde onderwerpen. 
 Op de overzichtspagina van de Webinars worden alle webinars getoond, en kan de gebruiker de webinars sorteren (nieuwste, oudste, views, naam) en filteren op categorie. En op de detail pagina van een webinar wordt, natuurlijk, de webinar zelf getoond, met extra informatie over de spreker, de bijbehorende contourings en bijbehorende articles. 
