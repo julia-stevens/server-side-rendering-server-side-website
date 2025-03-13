@@ -163,7 +163,6 @@
     
             .webinar-article {
                 width: 80vw;  
-
                 max-width: 25rem;
                 
                 .webinar-thumbnail {
@@ -190,15 +189,6 @@
                         font-size: .8rem;
                         padding: var(--padding-small);
                         border-radius: var(--small-radius)
-                    }
-                }
-    
-                .webinar-info {
-                    h3 {
-                        width: 100%;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
                     }
                 }
             }

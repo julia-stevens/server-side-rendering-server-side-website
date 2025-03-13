@@ -80,7 +80,7 @@
                                         <p>{{ webinar.duration }}</p>
                                     </div>
                                     <div class="webinar-info">
-                                        <h3>{{ webinar.title }}</h3>  
+                                        <h3>{{ webinar.title |  truncatewords: 6 }}</h3>  
                                         {% for speaker in webinar.speakers %}
                                             <p>{{ speaker.avl_speakers_id.fullname }}</p>
                                         {% endfor %}
