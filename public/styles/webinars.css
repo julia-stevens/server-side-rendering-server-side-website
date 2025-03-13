@@ -141,8 +141,8 @@
                 } 
             }
                     
-            .webinars-filter label input[type="radio"]:checked + label,
-            .webinars-filter label:has(input[type="radio"]:checked) {
+            .webinars-filter label input[type="radio"]:checked + label, /* radio input checked en label */
+            .webinars-filter label:has(input[type="radio"]:checked) { /* label met een input (van radio type) die checked is */
                 color: var(--secondary-color);
                 background-color: var(--primary-color);
             }
@@ -150,7 +150,6 @@
 
         .webinars-overview {
             width: 100%;
-    
             /* FLEX parent */
             display: flex; 
             flex-direction: column;
@@ -206,7 +205,3 @@
         }
     }
 }
-
-
-
-

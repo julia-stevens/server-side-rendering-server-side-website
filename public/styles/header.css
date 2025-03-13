@@ -2,7 +2,6 @@ header {
     position: sticky; 
     top: 0; 
     z-index: 99;
-
     max-width: 1300px;
     margin: 0 auto;
 }
@@ -11,7 +10,6 @@ header {
     background-color: var(--primary-color);
     padding: var(--padding-sections);
     border-radius: 0 0 var(--small-radius) var(--small-radius);
-
     /* FLEX parent */
     display: flex; 
     align-items: center; 
@@ -71,6 +69,5 @@ header {
                 background-color: var(--light);
             }
         }
-
     }
 }

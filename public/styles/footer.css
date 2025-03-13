@@ -10,7 +10,6 @@ footer {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-
             background-color: var(--primary-color);
             padding: var(--padding-sections);
             border-radius: var(--small-radius) var(--small-radius) 0 0;
@@ -58,7 +57,6 @@ footer {
     padding: var(--padding-sections);
     overflow-x: auto; 
     border-radius: var(--small-radius) var(--small-radius) 0 0;
-
     /* FLEX parent */
     display: flex; 
     align-items: center;
@@ -72,7 +70,6 @@ footer {
     a {
         figure {
             height: 100%;
-
             /* FLEX parent */
             display: flex; 
             flex-direction: column;

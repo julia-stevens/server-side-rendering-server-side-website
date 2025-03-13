@@ -26,10 +26,10 @@ app.get("/", async function (request, response) {
   const contouringResponseJSON = await contouringResponse.json()
 
   // van ChatGPT om alle resources op te halen 
-  let allResources = []
-  webinarResponseJSON.data.forEach((webinar) => {
-    if (webinar.resources && Array.isArray(webinar.resources)) {
-      allResources = allResources.concat(webinar.resources)
+  let allResources = [] // allResources array 
+  webinarResponseJSON.data.forEach((webinar) => { // voor elke webinar
+    if (webinar.resources && Array.isArray(webinar.resources)) { // als er resources zijn & webinar.resources is een array
+      allResources = allResources.concat(webinar.resources) // dan voeg de resources toe aan de array (allResources) 
     }
   })
   // einde ChatGPT code
@@ -64,8 +64,8 @@ app.get("/webinars/", async function (request, response) {
       sortWebinars = "";
   }  
 
-  if (request.query.category) {
-    filteredCategory = `${filterCategory}${encodeURIComponent(request.query.category)}`;
+  if (request.query.category) { // als er een category in de URL staat
+    filteredCategory = `${filterCategory}${encodeURIComponent(request.query.category)}`; // voeg category toe aan string filteredCategory 
   }
   
   const webinarResponse = await fetch(`${apiEndpoint}${apiWebinarEndpoint}${webinarFields}${sortWebinars}${filteredCategory}`);
